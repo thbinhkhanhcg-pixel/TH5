@@ -2,53 +2,54 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Luyện tập Tin học 5</title>
+<title>LMS Tin học Tiểu học</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  background:#eef2ff;
+  background:#f0f9ff;
 }
 header{
-  background:#4f46e5;
+  background:#2563eb;
   color:white;
-  padding:20px;
   text-align:center;
-  font-size:26px;
+  padding:25px;
+  font-size:28px;
   font-weight:bold;
 }
 .container{
   max-width:900px;
   margin:30px auto;
   padding:15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
 }
 .card{
   background:white;
-  border-radius:16px;
-  padding:20px;
-  margin-bottom:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 8px 18px rgba(0,0,0,0.1);
-  flex-wrap:wrap;
+  border-radius:18px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  transition:transform 0.2s;
 }
+.card:hover{transform:scale(1.05);}
 .card h2{
-  margin:0;
-  font-size:22px;
+  font-size:26px;
+  margin-bottom:15px;
 }
-.btn{
+.card a{
+  display:inline-block;
   background:#22c55e;
   color:white;
   padding:14px 22px;
-  font-size:18px;
-  border-radius:12px;
+  border-radius:14px;
   text-decoration:none;
+  font-size:18px;
   font-weight:bold;
 }
-.btn:hover{background:#16a34a;}
 footer{
   text-align:center;
   padding:20px;
@@ -59,23 +60,31 @@ footer{
 
 <body>
 
-<header>🎒 LUYỆN TẬP TIN HỌC 5</header>
+<header>🎒 HỆ THỐNG LUYỆN TẬP TIN HỌC</header>
 
 <div class="container">
-
   <div class="card">
-    <h2>📘 Bài 1: Căn bản công nghệ</h2>
-    <a class="btn" href="Bai1Canbanvecongnghe(L1)/index.html">▶ VÀO HỌC</a>
+    <h2>📘 LỚP 2</h2>
+    <a href="lop2/index.html">VÀO HỌC</a>
   </div>
 
   <div class="card">
-    <h2>📗 Bài 2: Living Online</h2>
-    <a class="btn" href="LivingOnline(Test1)/index.html">▶ VÀO HỌC</a>
+    <h2>📗 LỚP 3</h2>
+    <a href="lop3/index.html">VÀO HỌC</a>
   </div>
 
+  <div class="card">
+    <h2>📙 LỚP 4</h2>
+    <a href="lop4/index.html">VÀO HỌC</a>
+  </div>
+
+  <div class="card">
+    <h2>📕 LỚP 5</h2>
+    <a href="lop5/index.html">VÀO HỌC</a>
+  </div>
 </div>
 
-<footer>© Giáo viên Tin học</footer>
+<footer>© Giáo viên Tin học Tiểu học</footer>
 
 </body>
 </html>
