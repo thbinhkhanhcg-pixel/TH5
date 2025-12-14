@@ -18,77 +18,98 @@ header{
   background:linear-gradient(90deg,#2563eb,#3b82f6);
   color:#fff;
   text-align:center;
-  padding:30px 15px;
+  padding:35px 15px;
 }
 header h1{
   margin:0;
-  font-size:30px;
+  font-size:34px;
 }
 header p{
-  margin-top:8px;
+  margin-top:10px;
   font-size:18px;
-  opacity:0.95;
 }
 
 /* ===== CONTAINER ===== */
 .container{
-  max-width:1000px;
+  max-width:1400px;
   margin:40px auto;
   padding:15px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(5,1fr);
   gap:25px;
 }
 
 /* ===== CARD ===== */
 .card{
-  background:#fff;
-  border-radius:22px;
-  padding:30px 20px;
+  border-radius:26px;
+  padding:40px 20px;
   text-align:center;
-  box-shadow:0 12px 25px rgba(0,0,0,0.12);
+  color:#fff;
+  box-shadow:0 14px 30px rgba(0,0,0,0.18);
   transition:all 0.25s ease;
+  cursor:pointer;
 }
 .card:hover{
-  transform:translateY(-8px) scale(1.03);
+  transform:translateY(-10px) scale(1.05);
 }
 
 /* ICON */
 .icon{
-  font-size:60px;
-  margin-bottom:15px;
+  font-size:70px;
+  margin-bottom:18px;
+  display:inline-block;
+  animation:bounce 2s infinite;
 }
 
 /* TITLE */
 .card h2{
-  margin:10px 0;
-  font-size:26px;
-  color:#1f2937;
+  margin:10px 0 20px;
+  font-size:28px;
 }
 
 /* BUTTON */
 .card a{
   display:inline-block;
-  margin-top:15px;
-  padding:14px 26px;
-  background:#22c55e;
-  color:white;
-  border-radius:16px;
+  padding:14px 28px;
+  background:rgba(255,255,255,0.25);
+  color:#fff;
+  border-radius:18px;
   text-decoration:none;
   font-size:18px;
   font-weight:700;
-  box-shadow:0 6px 0 #16a34a;
+  backdrop-filter:blur(3px);
 }
 .card a:hover{
-  background:#16a34a;
+  background:rgba(255,255,255,0.35);
+}
+
+/* ===== COLORS ===== */
+.lop1{background:linear-gradient(135deg,#f97316,#fb923c);}
+.lop2{background:linear-gradient(135deg,#22c55e,#4ade80);}
+.lop3{background:linear-gradient(135deg,#0ea5e9,#38bdf8);}
+.lop4{background:linear-gradient(135deg,#8b5cf6,#a78bfa);}
+.lop5{background:linear-gradient(135deg,#ef4444,#f87171);}
+
+/* ===== ANIMATION ===== */
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
 }
 
 /* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding:25px 10px;
+  padding:25px;
   color:#555;
   font-size:14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1000px){
+  .container{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:600px){
+  .container{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -96,37 +117,37 @@ footer{
 <body>
 
 <header>
-  <h1>🖥️📚 LMS TIN HỌC TIỂU HỌC</h1>
+  <h1>💻📘TIN HỌC TIỂU HỌC</h1>
   <p>Chọn khối lớp phù hợp để bắt đầu luyện tập</p>
 </header>
 
 <div class="container">
 
-  <div class="card">
+  <div class="card lop1" onclick="ting()">
     <div class="icon">🎈</div>
     <h2>Lớp 1</h2>
     <a href="lop1/index.html">Vào học</a>
   </div>
 
-  <div class="card">
+  <div class="card lop2" onclick="ting()">
     <div class="icon">🧩</div>
     <h2>Lớp 2</h2>
     <a href="lop2/index.html">Vào học</a>
   </div>
 
-  <div class="card">
+  <div class="card lop3" onclick="ting()">
     <div class="icon">🖱️</div>
     <h2>Lớp 3</h2>
     <a href="lop3/index.html">Vào học</a>
   </div>
 
-  <div class="card">
+  <div class="card lop4" onclick="ting()">
     <div class="icon">💻</div>
     <h2>Lớp 4</h2>
     <a href="lop4/index.html">Vào học</a>
   </div>
 
-  <div class="card">
+  <div class="card lop5" onclick="ting()">
     <div class="icon">🤖</div>
     <h2>Lớp 5</h2>
     <a href="lop5/index.html">Vào học</a>
@@ -135,8 +156,23 @@ footer{
 </div>
 
 <footer>
-  © Hệ thống luyện tập Tin học Tiểu học – Giáo viên thiết kế
+  © LMS Tin học Tiểu học – Thiết kế dành riêng cho học sinh
 </footer>
+
+<script>
+function ting(){
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "sine";
+  osc.frequency.value = 1200;
+  gain.gain.value = 0.15;
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.12);
+}
+</script>
 
 </body>
 </html>
