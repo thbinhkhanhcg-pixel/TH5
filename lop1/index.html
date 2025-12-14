@@ -12,7 +12,7 @@ body{
   background:#eef7ff;
 }
 
-/* Nút trang chủ */
+/* ===== NÚT TRANG CHỦ ===== */
 .home-btn{
   position:fixed;
   top:12px;
@@ -27,17 +27,55 @@ body{
   z-index:10;
 }
 
-/* Tiêu đề */
-header{
+/* ===== HEADER ===== */
+.top-header{
+  background:linear-gradient(135deg,#dbeafe,#eef7ff);
+  padding:35px 15px 25px;
   text-align:center;
-  padding:30px 10px 20px;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.1);
 }
-header h1{
-  font-size:30px;
+.top-header h1{
+  margin:0;
+  font-size:32px;
   color:#1e40af;
 }
+.top-header p{
+  margin:8px 0 15px;
+  color:#334155;
+  font-size:16px;
+}
 
-/* Danh sách bài */
+/* ===== CHỌN HỌC KÌ ===== */
+.semester-select{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+.semester-btn{
+  padding:10px 18px;
+  border:none;
+  border-radius:14px;
+  background:#e5e7eb;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.semester-btn.active{
+  background:#2563eb;
+  color:white;
+}
+
+/* ===== MAIN ===== */
+.main-content{
+  margin-top:20px;
+  background:white;
+  border-radius:30px;
+  padding:10px 0 30px;
+}
+
+/* ===== DANH SÁCH BÀI ===== */
 .container{
   max-width:900px;
   margin:0 auto;
@@ -47,10 +85,9 @@ header h1{
   gap:20px;
 }
 
-/* Thẻ bài */
+/* ===== THẺ BÀI ===== */
 .card{
   position:relative;
-  background:white;
   border-radius:20px;
   padding:30px 20px;
   text-align:center;
@@ -61,13 +98,11 @@ header h1{
 .card:hover{
   transform:scale(1.05);
 }
-
-/* Card bị khóa */
 .card.locked{
   opacity:0.65;
 }
 
-/* Icon bài học */
+/* ===== ICON ===== */
 .icon{
   font-size:48px;
   animation:bounce 1.2s infinite alternate;
@@ -83,7 +118,7 @@ header h1{
   color:#0f172a;
 }
 
-/* Ổ khóa */
+/* ===== Ổ KHÓA ===== */
 .lock{
   position:absolute;
   top:12px;
@@ -91,13 +126,13 @@ header h1{
   font-size:26px;
 }
 
-/* Màu từng bài */
+/* ===== MÀU BÀI ===== */
 .bai1{background:#dbeafe;}
 .bai2{background:#dcfce7;}
 .bai3{background:#fef9c3;}
 .bai4{background:#fde2e2;}
 
-/* Popup thông báo */
+/* ===== POPUP ===== */
 #popup{
   position:fixed;
   inset:0;
@@ -136,40 +171,56 @@ header h1{
 
 <a class="home-btn" href="../index.html">🏠 Trang chủ</a>
 
-<header>
+<!-- ===== HEADER ===== -->
+<header class="top-header">
   <h1>💻📘 LỚP 1 – TIN HỌC</h1>
+  <p>Chọn học kì để bắt đầu bài học nhé!</p>
+
+  <div class="semester-select">
+    <button class="semester-btn active" onclick="showSemester(1)">📗 Học kì 1</button>
+    <button class="semester-btn" onclick="showSemester(2)">📕 Học kì 2</button>
+  </div>
 </header>
 
-<div class="container">
+<!-- ===== MAIN ===== -->
+<main class="main-content">
 
-  <!-- BÀI CÓ SCORM -->
-  <div class="card bai1" data-ready="true" data-link="bai1/index.html">
-    <div class="icon">🖱️</div>
-    <h2>Bài 1<br>Làm quen chuột</h2>
+  <!-- ===== HỌC KÌ 1 ===== -->
+  <div class="container semester semester-1">
+
+    <div class="card bai1" data-ready="true" data-link="bai1/index.html">
+      <div class="icon">🖱️</div>
+      <h2>Bài 1<br>Làm quen chuột</h2>
+    </div>
+
+    <div class="card bai2 locked" data-ready="false">
+      <div class="lock">🔒</div>
+      <div class="icon">⌨️</div>
+      <h2>Bài 2<br>Bàn phím</h2>
+    </div>
+
+    <div class="card bai3 locked" data-ready="false">
+      <div class="lock">🔒</div>
+      <div class="icon">🖥️</div>
+      <h2>Bài 3<br>Màn hình</h2>
+    </div>
+
   </div>
 
-  <!-- CHƯA CÓ SCORM -->
-  <div class="card bai2 locked" data-ready="false">
-    <div class="lock">🔒</div>
-    <div class="icon">⌨️</div>
-    <h2>Bài 2<br>Bàn phím</h2>
+  <!-- ===== HỌC KÌ 2 ===== -->
+  <div class="container semester semester-2" style="display:none">
+
+    <div class="card bai4 locked" data-ready="false">
+      <div class="lock">🔒</div>
+      <div class="icon">🎮</div>
+      <h2>Luyện tập<br>Học kì 2</h2>
+    </div>
+
   </div>
 
-  <div class="card bai3 locked" data-ready="false">
-    <div class="lock">🔒</div>
-    <div class="icon">🖥️</div>
-    <h2>Bài 3<br>Màn hình</h2>
-  </div>
+</main>
 
-  <div class="card bai4 locked" data-ready="false">
-    <div class="lock">🔒</div>
-    <div class="icon">🎮</div>
-    <h2>Luyện tập</h2>
-  </div>
-
-</div>
-
-<!-- POPUP -->
+<!-- ===== POPUP ===== -->
 <div id="popup">
   <div class="popup-box">
     <h3>🔒 Chưa mở bài học</h3>
@@ -186,11 +237,10 @@ document.querySelectorAll(".card").forEach(card=>{
     clickSound.currentTime = 0;
     clickSound.play();
 
-    const ready = this.dataset.ready;
-
-    if(ready === "true"){
-      const link = this.dataset.link;
-      setTimeout(()=>{ window.location.href = link; },150);
+    if(this.dataset.ready === "true"){
+      setTimeout(()=>{
+        window.location.href = this.dataset.link;
+      },150);
     }else{
       setTimeout(showPopup,150);
     }
@@ -202,6 +252,15 @@ function showPopup(){
 }
 function closePopup(){
   document.getElementById("popup").style.display="none";
+}
+
+/* CHUYỂN HỌC KÌ */
+function showSemester(semester){
+  document.querySelectorAll(".semester").forEach(s=>s.style.display="none");
+  document.querySelector(".semester-"+semester).style.display="grid";
+
+  document.querySelectorAll(".semester-btn").forEach(btn=>btn.classList.remove("active"));
+  document.querySelectorAll(".semester-btn")[semester-1].classList.add("active");
 }
 </script>
 
