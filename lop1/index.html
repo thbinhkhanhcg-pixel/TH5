@@ -2,153 +2,129 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Lớp 1 – Tin học Tiểu học</title>
+<title>Lớp 1 - Luyện tập Tin học</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- ICON -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- ÂM THANH -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
 
 <style>
 body{
   margin:0;
-  font-family:"Comic Sans MS", Arial, sans-serif;
-  background:linear-gradient(#e0f2fe,#f0f9ff);
+  font-family: Arial, sans-serif;
+  background:#eef7ff;
 }
 
-/* HEADER */
-header{
-  background:#2563eb;
-  color:white;
-  padding:20px;
-  text-align:center;
-  font-size:32px;
-  font-weight:bold;
-}
-
-/* NÚT TRANG CHỦ */
+/* Nút trang chủ */
 .home-btn{
   position:fixed;
-  top:15px;
-  left:15px;
-  background:white;
-  color:#2563eb;
-  padding:12px 16px;
-  border-radius:14px;
+  top:12px;
+  left:12px;
+  background:#2563eb;
+  color:white;
+  padding:10px 14px;
+  border-radius:12px;
   text-decoration:none;
   font-weight:bold;
-  box-shadow:0 6px 15px rgba(0,0,0,0.2);
-  z-index:999;
+  box-shadow:0 6px 12px rgba(0,0,0,0.2);
 }
-.home-btn:hover{background:#dbeafe;}
 
-/* LAYOUT */
+/* Tiêu đề */
+header{
+  text-align:center;
+  padding:30px 10px 20px;
+}
+header h1{
+  font-size:30px;
+  color:#1e40af;
+}
+
+/* Danh sách bài */
 .container{
-  max-width:1000px;
-  margin:40px auto;
+  max-width:900px;
+  margin:0 auto;
   padding:20px;
   display:grid;
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
-/* MÁY TÍNH */
-@media(min-width:1024px){
-  .container{grid-template-columns:repeat(3,1fr);}
-}
-
-/* TABLET */
-@media(min-width:600px) and (max-width:1023px){
-  .container{grid-template-columns:repeat(2,1fr);}
-}
-
-/* ĐIỆN THOẠI */
-@media(max-width:599px){
-  .container{grid-template-columns:1fr;}
-}
-
-/* CARD */
+/* Thẻ bài */
 .card{
-  border-radius:22px;
+  background:white;
+  border-radius:20px;
   padding:30px 20px;
   text-align:center;
-  color:white;
-  font-size:22px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
   cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,0.25);
   transition:transform 0.2s;
 }
 .card:hover{
   transform:scale(1.05);
 }
 
-/* ICON */
-.card i{
-  font-size:60px;
-  margin-bottom:15px;
-  animation:bounce 1.4s infinite;
+/* Icon nhúc nhích */
+.icon{
+  font-size:48px;
+  animation:bounce 1.2s infinite alternate;
 }
-
 @keyframes bounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
+  from{transform:translateY(0);}
+  to{transform:translateY(-8px);}
 }
 
-/* MÀU */
-.bai1{background:#22c55e;}
-.bai2{background:#f97316;}
-.bai3{background:#a855f7;}
-
-footer{
-  text-align:center;
-  padding:20px;
-  color:#555;
-  font-size:14px;
+.card h2{
+  margin:15px 0;
+  font-size:22px;
+  color:#0f172a;
 }
+
+/* Màu khác nhau */
+.bai1{background:#dbeafe;}
+.bai2{background:#dcfce7;}
+.bai3{background:#fef9c3;}
+.bai4{background:#fde2e2;}
 </style>
 </head>
 
 <body>
 
-<a class="home-btn" href="../index.html">
-  <i class="fa-solid fa-house"></i> Trang chủ
-</a>
+<a class="home-btn" href="../index.html">🏠 Trang chủ</a>
 
-<header>🧠 TIN HỌC LỚP 1</header>
+<header>
+  <h1>💻📘 LỚP 1 – TIN HỌC</h1>
+</header>
 
 <div class="container">
 
   <div class="card bai1" onclick="go('bai1/index.html')">
-    <i class="fa-solid fa-computer"></i>
-    <div>Bài 1<br> Làm quen máy tính</div>
+    <div class="icon">🖱️</div>
+    <h2>Bài 1<br>Làm quen chuột</h2>
   </div>
 
   <div class="card bai2" onclick="go('bai2/index.html')">
-    <i class="fa-solid fa-mouse"></i>
-    <div>Bài 2<br> Chuột máy tính</div>
+    <div class="icon">⌨️</div>
+    <h2>Bài 2<br>Bàn phím</h2>
   </div>
 
   <div class="card bai3" onclick="go('bai3/index.html')">
-    <i class="fa-solid fa-keyboard"></i>
-    <div>Bài 3<br> Bàn phím</div>
+    <div class="icon">🖥️</div>
+    <h2>Bài 3<br>Màn hình</h2>
+  </div>
+
+  <div class="card bai4" onclick="go('bai4/index.html')">
+    <div class="icon">🎮</div>
+    <h2>Luyện tập</h2>
   </div>
 
 </div>
 
-<footer>
-© LMS Tin học Tiểu học – Lớp 1
-</footer>
-
 <script>
-const clickSound = new Howl({
-  src:['sound/click.mp3'],
-  volume:0.6
-});
-
 function go(link){
-  clickSound.play();
-  setTimeout(()=>{window.location.href=link;},200);
+  const audio = new Audio("sound/click.mp3");
+  audio.play();
+
+  // chờ tiếng click phát rồi mới chuyển trang
+  setTimeout(function(){
+    window.location.href = link;
+  }, 150);
 }
 </script>
 
