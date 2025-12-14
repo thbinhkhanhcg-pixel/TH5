@@ -2,168 +2,153 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Lớp 1 – Tin học</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lớp 1 – Tin học Tiểu học</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ÂM THANH -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
 
 <style>
-*{box-sizing:border-box;}
 body{
   margin:0;
-  font-family:"Segoe UI", Arial, sans-serif;
-  background:linear-gradient(180deg,#fff7ed,#ffedd5);
+  font-family:"Comic Sans MS", Arial, sans-serif;
+  background:linear-gradient(#e0f2fe,#f0f9ff);
 }
 
-/* ===== BACK HOME BUTTON ===== */
+/* HEADER */
+header{
+  background:#2563eb;
+  color:white;
+  padding:20px;
+  text-align:center;
+  font-size:32px;
+  font-weight:bold;
+}
+
+/* NÚT TRANG CHỦ */
 .home-btn{
   position:fixed;
   top:15px;
   left:15px;
-  background:#2563eb;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:16px;
+  background:white;
+  color:#2563eb;
+  padding:12px 16px;
+  border-radius:14px;
   text-decoration:none;
-  font-size:16px;
-  font-weight:700;
+  font-weight:bold;
   box-shadow:0 6px 15px rgba(0,0,0,0.2);
-  z-index:1000;
+  z-index:999;
 }
-.home-btn:hover{
-  background:#1d4ed8;
-}
+.home-btn:hover{background:#dbeafe;}
 
-/* ===== HEADER ===== */
-header{
-  background:linear-gradient(90deg,#f97316,#fb923c);
-  color:#fff;
-  text-align:center;
-  padding:40px 15px 30px;
-}
-header h1{
-  margin:0;
-  font-size:32px;
-}
-header p{
-  margin-top:8px;
-  font-size:18px;
-}
-
-/* ===== CONTAINER ===== */
+/* LAYOUT */
 .container{
-  max-width:1100px;
+  max-width:1000px;
   margin:40px auto;
-  padding:15px;
+  padding:20px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+  gap:25px;
 }
 
-/* ===== CARD ===== */
+/* MÁY TÍNH */
+@media(min-width:1024px){
+  .container{grid-template-columns:repeat(3,1fr);}
+}
+
+/* TABLET */
+@media(min-width:600px) and (max-width:1023px){
+  .container{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ĐIỆN THOẠI */
+@media(max-width:599px){
+  .container{grid-template-columns:1fr;}
+}
+
+/* CARD */
 .card{
-  background:#fff;
-  border-radius:26px;
-  padding:35px 20px;
+  border-radius:22px;
+  padding:30px 20px;
   text-align:center;
-  box-shadow:0 14px 30px rgba(0,0,0,0.18);
-  transition:all 0.25s ease;
+  color:white;
+  font-size:22px;
   cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+  transition:transform 0.2s;
 }
 .card:hover{
-  transform:translateY(-8px) scale(1.04);
+  transform:scale(1.05);
 }
 
 /* ICON */
-.icon{
-  font-size:64px;
-  margin-bottom:18px;
-  animation:bounce 2s infinite;
+.card i{
+  font-size:60px;
+  margin-bottom:15px;
+  animation:bounce 1.4s infinite;
 }
 
-/* TITLE */
-.card h2{
-  margin:10px 0 18px;
-  font-size:26px;
-  color:#1f2937;
-}
-
-/* BUTTON */
-.card a{
-  display:inline-block;
-  padding:16px 30px;
-  background:#f97316;
-  color:#fff;
-  border-radius:20px;
-  text-decoration:none;
-  font-size:20px;
-  font-weight:700;
-  box-shadow:0 6px 0 #ea580c;
-}
-.card a:hover{
-  background:#ea580c;
-}
-
-/* ===== ANIMATION ===== */
 @keyframes bounce{
   0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-6px);}
+  50%{transform:translateY(-10px);}
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width:600px){
-  header h1{font-size:26px;}
-  .card h2{font-size:22px;}
-  .home-btn{
-    font-size:14px;
-    padding:10px 14px;
-  }
+/* MÀU */
+.bai1{background:#22c55e;}
+.bai2{background:#f97316;}
+.bai3{background:#a855f7;}
+
+footer{
+  text-align:center;
+  padding:20px;
+  color:#555;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NÚT TRANG CHỦ -->
-<a class="home-btn" href="../index.html">🏠 Trang chủ</a>
+<a class="home-btn" href="../index.html">
+  <i class="fa-solid fa-house"></i> Trang chủ
+</a>
 
-<header>
-  <h1>🎈 LỚP 1 – TIN HỌC</h1>
-  <p>Chọn bài học để bắt đầu luyện tập</p>
-</header>
+<header>🧠 TIN HỌC LỚP 1</header>
 
 <div class="container">
 
-  <div class="card" onclick="ting()">
-    <div class="icon">🖥️</div>
-    <h2>Làm quen với máy tính</h2>
-    <a href="bai1/index.html">Vào học</a>
+  <div class="card bai1" onclick="go('bai1/index.html')">
+    <i class="fa-solid fa-computer"></i>
+    <div>Bài 1<br> Làm quen máy tính</div>
   </div>
 
-  <div class="card" onclick="ting()">
-    <div class="icon">🖱️</div>
-    <h2>Làm quen với chuột</h2>
-    <a href="bai2/index.html">Vào học</a>
+  <div class="card bai2" onclick="go('bai2/index.html')">
+    <i class="fa-solid fa-mouse"></i>
+    <div>Bài 2<br> Chuột máy tính</div>
   </div>
 
-  <div class="card" onclick="ting()">
-    <div class="icon">⌨️</div>
-    <h2>Làm quen bàn phím</h2>
-    <a href="bai3/index.html">Vào học</a>
+  <div class="card bai3" onclick="go('bai3/index.html')">
+    <i class="fa-solid fa-keyboard"></i>
+    <div>Bài 3<br> Bàn phím</div>
   </div>
 
 </div>
 
+<footer>
+© LMS Tin học Tiểu học – Lớp 1
+</footer>
+
 <script>
-function ting(){
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "sine";
-  osc.frequency.value = 1100;
-  gain.gain.value = 0.15;
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  osc.start();
-  osc.stop(ctx.currentTime + 0.12);
+const clickSound = new Howl({
+  src:['sound/click.mp3'],
+  volume:0.6
+});
+
+function go(link){
+  clickSound.play();
+  setTimeout(()=>{window.location.href=link;},200);
 }
 </script>
 
