@@ -2,13 +2,13 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Lớp 1 - Luyện tập Tin học</title>
+<title>Lớp 1 - Tin học</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
   background:#eef7ff;
 }
 
@@ -49,6 +49,7 @@ header h1{
 
 /* Thẻ bài */
 .card{
+  position:relative;
   background:white;
   border-radius:20px;
   padding:30px 20px;
@@ -57,9 +58,16 @@ header h1{
   cursor:pointer;
   transition:transform 0.2s;
 }
-.card:hover{ transform:scale(1.05); }
+.card:hover{
+  transform:scale(1.05);
+}
 
-/* Icon nhúc nhích */
+/* Card bị khóa */
+.card.locked{
+  opacity:0.65;
+}
+
+/* Icon bài học */
 .icon{
   font-size:48px;
   animation:bounce 1.2s infinite alternate;
@@ -70,22 +78,29 @@ header h1{
 }
 
 .card h2{
-  margin:15px 0;
+  margin:15px 0 0;
   font-size:22px;
   color:#0f172a;
 }
 
-/* Màu khác nhau */
+/* Ổ khóa */
+.lock{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:26px;
+}
+
+/* Màu từng bài */
 .bai1{background:#dbeafe;}
 .bai2{background:#dcfce7;}
 .bai3{background:#fef9c3;}
 .bai4{background:#fde2e2;}
 
-/* Hộp thông báo */
+/* Popup thông báo */
 #popup{
   position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
+  inset:0;
   background:rgba(0,0,0,0.4);
   display:none;
   align-items:center;
@@ -134,28 +149,31 @@ header h1{
   </div>
 
   <!-- CHƯA CÓ SCORM -->
-  <div class="card bai2" data-ready="false">
+  <div class="card bai2 locked" data-ready="false">
+    <div class="lock">🔒</div>
     <div class="icon">⌨️</div>
     <h2>Bài 2<br>Bàn phím</h2>
   </div>
 
-  <div class="card bai3" data-ready="false">
+  <div class="card bai3 locked" data-ready="false">
+    <div class="lock">🔒</div>
     <div class="icon">🖥️</div>
     <h2>Bài 3<br>Màn hình</h2>
   </div>
 
-  <div class="card bai4" data-ready="false">
+  <div class="card bai4 locked" data-ready="false">
+    <div class="lock">🔒</div>
     <div class="icon">🎮</div>
     <h2>Luyện tập</h2>
   </div>
 
 </div>
 
-<!-- POPUP THÔNG BÁO -->
+<!-- POPUP -->
 <div id="popup">
   <div class="popup-box">
-    <h3>⏳ Chưa có bài học</h3>
-    <p>Bài học này thầy/cô đang chuẩn bị.<br>Con quay lại sau nhé 😊</p>
+    <h3>🔒 Chưa mở bài học</h3>
+    <p>Bài này thầy/cô đang chuẩn bị.<br>Con quay lại sau nhé 😊</p>
     <button onclick="closePopup()">OK</button>
   </div>
 </div>
@@ -172,9 +190,9 @@ document.querySelectorAll(".card").forEach(card=>{
 
     if(ready === "true"){
       const link = this.dataset.link;
-      setTimeout(()=>{ window.location.href = link; }, 150);
+      setTimeout(()=>{ window.location.href = link; },150);
     }else{
-      setTimeout(()=>{ showPopup(); }, 150);
+      setTimeout(showPopup,150);
     }
   });
 });
