@@ -24,6 +24,7 @@ body{
   text-decoration:none;
   font-weight:bold;
   box-shadow:0 6px 12px rgba(0,0,0,0.2);
+  z-index:10;
 }
 
 /* Tiêu đề */
@@ -56,9 +57,7 @@ header h1{
   cursor:pointer;
   transition:transform 0.2s;
 }
-.card:hover{
-  transform:scale(1.05);
-}
+.card:hover{ transform:scale(1.05); }
 
 /* Icon nhúc nhích */
 .icon{
@@ -81,6 +80,40 @@ header h1{
 .bai2{background:#dcfce7;}
 .bai3{background:#fef9c3;}
 .bai4{background:#fde2e2;}
+
+/* Hộp thông báo */
+#popup{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:20;
+}
+.popup-box{
+  background:white;
+  padding:30px 25px;
+  border-radius:20px;
+  text-align:center;
+  max-width:300px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
+}
+.popup-box h3{
+  margin-top:0;
+  color:#dc2626;
+}
+.popup-box button{
+  margin-top:20px;
+  padding:10px 18px;
+  border:none;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
 </style>
 </head>
 
@@ -94,37 +127,63 @@ header h1{
 
 <div class="container">
 
-  <div class="card bai1" onclick="go('bai1/index.html')">
+  <!-- BÀI CÓ SCORM -->
+  <div class="card bai1" data-ready="true" data-link="bai1/index.html">
     <div class="icon">🖱️</div>
     <h2>Bài 1<br>Làm quen chuột</h2>
   </div>
 
-  <div class="card bai2" onclick="go('bai2/index.html')">
+  <!-- CHƯA CÓ SCORM -->
+  <div class="card bai2" data-ready="false">
     <div class="icon">⌨️</div>
     <h2>Bài 2<br>Bàn phím</h2>
   </div>
 
-  <div class="card bai3" onclick="go('bai3/index.html')">
+  <div class="card bai3" data-ready="false">
     <div class="icon">🖥️</div>
     <h2>Bài 3<br>Màn hình</h2>
   </div>
 
-  <div class="card bai4" onclick="go('bai4/index.html')">
+  <div class="card bai4" data-ready="false">
     <div class="icon">🎮</div>
     <h2>Luyện tập</h2>
   </div>
 
 </div>
 
-<script>
-function go(link){
-  const audio = new Audio("sound/click.mp3");
-  audio.play();
+<!-- POPUP THÔNG BÁO -->
+<div id="popup">
+  <div class="popup-box">
+    <h3>⏳ Chưa có bài học</h3>
+    <p>Bài học này thầy/cô đang chuẩn bị.<br>Con quay lại sau nhé 😊</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
 
-  // chờ tiếng click phát rồi mới chuyển trang
-  setTimeout(function(){
-    window.location.href = link;
-  }, 150);
+<script>
+const clickSound = new Audio("sound/click.mp3");
+
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("click", function(){
+    clickSound.currentTime = 0;
+    clickSound.play();
+
+    const ready = this.dataset.ready;
+
+    if(ready === "true"){
+      const link = this.dataset.link;
+      setTimeout(()=>{ window.location.href = link; }, 150);
+    }else{
+      setTimeout(()=>{ showPopup(); }, 150);
+    }
+  });
+});
+
+function showPopup(){
+  document.getElementById("popup").style.display="flex";
+}
+function closePopup(){
+  document.getElementById("popup").style.display="none";
 }
 </script>
 
