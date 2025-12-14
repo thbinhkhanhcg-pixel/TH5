@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lớp 1 – Tin học</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:linear-gradient(180deg,#fff7ed,#ffedd5);
+}
+
+/* ===== HEADER ===== */
+header{
+  background:linear-gradient(90deg,#f97316,#fb923c);
+  color:#fff;
+  text-align:center;
+  padding:30px 15px;
+}
+header h1{
+  margin:0;
+  font-size:32px;
+}
+header p{
+  margin-top:8px;
+  font-size:18px;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1100px;
+  margin:40px auto;
+  padding:15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:#fff;
+  border-radius:26px;
+  padding:35px 20px;
+  text-align:center;
+  box-shadow:0 14px 30px rgba(0,0,0,0.18);
+  transition:all 0.25s ease;
+}
+.card:hover{
+  transform:translateY(-8px) scale(1.04);
+}
+
+/* ICON */
+.icon{
+  font-size:64px;
+  margin-bottom:18px;
+  animation:bounce 2s infinite;
+}
+
+/* TITLE */
+.card h2{
+  margin:10px 0 18px;
+  font-size:26px;
+  color:#1f2937;
+}
+
+/* BUTTON */
+.card a{
+  display:inline-block;
+  padding:16px 30px;
+  background:#f97316;
+  color:#fff;
+  border-radius:20px;
+  text-decoration:none;
+  font-size:20px;
+  font-weight:700;
+  box-shadow:0 6px 0 #ea580c;
+}
+.card a:hover{
+  background:#ea580c;
+}
+
+/* ===== BACK BUTTON ===== */
+.back{
+  display:block;
+  width:max-content;
+  margin:30px auto 0;
+  padding:14px 26px;
+  background:#2563eb;
+  color:#fff;
+  border-radius:18px;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:700;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:600px){
+  header h1{font-size:26px;}
+  .card h2{font-size:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎈 LỚP 1 – TIN HỌC</h1>
+  <p>Chọn bài học để bắt đầu luyện tập</p>
+</header>
+
+<div class="container">
+
+  <div class="card" onclick="ting()">
+    <div class="icon">🖥️</div>
+    <h2>Làm quen với máy tính</h2>
+    <a href="bai1/index.html">Vào học</a>
+  </div>
+
+  <div class="card" onclick="ting()">
+    <div class="icon">🖱️</div>
+    <h2>Làm quen với chuột</h2>
+    <a href="bai2/index.html">Vào học</a>
+  </div>
+
+  <div class="card" onclick="ting()">
+    <div class="icon">⌨️</div>
+    <h2>Làm quen bàn phím</h2>
+    <a href="bai3/index.html">Vào học</a>
+  </div>
+
+</div>
+
+<a class="back" href="../index.html">⬅ Quay về trang chủ</a>
+
+<script>
+function ting(){
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "sine";
+  osc.frequency.value = 1100;
+  gain.gain.value = 0.15;
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.12);
+}
+</script>
+
+</body>
+</html>
