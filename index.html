@@ -13,8 +13,44 @@ body{
   background:linear-gradient(180deg,#e0f2fe,#f0f9ff);
 }
 
+/* ===== THANH ĐIỀU HƯỚNG ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:56px;
+  background:#2563eb;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  z-index:1000;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  margin-right:14px;
+  padding:6px 12px;
+  border-radius:10px;
+  transition:.2s;
+  font-size:14px;
+}
+
+.navbar a:hover{
+  background:rgba(255,255,255,0.2);
+}
+
+.navbar .title{
+  margin-left:auto;
+  font-size:13px;
+  opacity:.9;
+}
+
 /* ===== HEADER ===== */
 header{
+  margin-top:56px; /* CHỪA CHỖ CHO NAVBAR */
   background:linear-gradient(90deg,#2563eb,#3b82f6);
   color:#fff;
   text-align:center;
@@ -77,10 +113,7 @@ header p{
   text-decoration:none;
   font-size:18px;
   font-weight:700;
-  backdrop-filter:blur(3px);
-}
-.card a:hover{
-  background:rgba(255,255,255,0.35);
+  pointer-events:none;
 }
 
 /* ===== COLORS ===== */
@@ -116,61 +149,69 @@ footer{
 
 <body>
 
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+  <a href="../index.html">🏠 Trang chủ</a>
+  <a href="../lop1/index.html">Lớp 1</a>
+  <a href="../lop2/index.html">Lớp 2</a>
+  <a href="../lop3/index.html">Lớp 3</a>
+  <a href="../lop4/index.html">Lớp 4</a>
+  <a href="../lop5/index.html">Lớp 5</a>
+
+  <div class="title">Năm học 2025–2026</div>
+</div>
+
 <header>
-  <h1>💻📘TIN HỌC TIỂU HỌC</h1>
-  <p>Chọn khối lớp phù hợp để bắt đầu luyện tập</p>
+  <h1>💻 TIN HỌC TIỂU HỌC</h1>
+  <p>Chọn khối lớp phù hợp để bắt đầu học tập nhé!</p>
 </header>
 
 <div class="container">
 
-  <div class="card lop1" onclick="ting()">
+  <div class="card lop1" onclick="goClass('lop1/index.html')">
     <div class="icon">🎈</div>
     <h2>Lớp 1</h2>
-    <a href="lop1/index.html">Vào học</a>
+    <a>Vào học</a>
   </div>
 
-  <div class="card lop2" onclick="ting()">
+  <div class="card lop2" onclick="goClass('lop2/index.html')">
     <div class="icon">🧩</div>
     <h2>Lớp 2</h2>
-    <a href="lop2/index.html">Vào học</a>
+    <a>Vào học</a>
   </div>
 
-  <div class="card lop3" onclick="ting()">
+  <div class="card lop3" onclick="goClass('lop3/index.html')">
     <div class="icon">🖱️</div>
     <h2>Lớp 3</h2>
-    <a href="lop3/index.html">Vào học</a>
+    <a>Vào học</a>
   </div>
 
-  <div class="card lop4" onclick="ting()">
+  <div class="card lop4" onclick="goClass('lop4/index.html')">
     <div class="icon">💻</div>
     <h2>Lớp 4</h2>
-    <a href="lop4/index.html">Vào học</a>
+    <a>Vào học</a>
   </div>
 
-  <div class="card lop5" onclick="ting()">
+  <div class="card lop5" onclick="goClass('lop5/index.html')">
     <div class="icon">🤖</div>
     <h2>Lớp 5</h2>
-    <a href="lop5/index.html">Vào học</a>
+    <a>Vào học</a>
   </div>
 
 </div>
 
 <footer>
-  © LMS Tin học Tiểu học – Thiết kế dành riêng cho học sinh
+  © LMS Tin học Tiểu học – Thiết kế thân thiện cho học sinh
 </footer>
 
 <script>
-function ting(){
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "sine";
-  osc.frequency.value = 1200;
-  gain.gain.value = 0.15;
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  osc.start();
-  osc.stop(ctx.currentTime + 0.12);
+const slideSound = new Audio("sound/slide.mp3");
+slideSound.preload = "auto";
+
+function goClass(link){
+  slideSound.currentTime = 0;
+  slideSound.play();
+  setTimeout(()=>window.location.href = link,300);
 }
 </script>
 
