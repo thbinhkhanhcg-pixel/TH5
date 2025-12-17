@@ -2,79 +2,146 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Luyện tập Tin học 5</title>
+<title>Lớp 5 - Tin học</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#fff7ed;
-}
-header{
-  background:#f97316;
-  color:white;
-  text-align:center;
-  padding:20px;
-  font-size:26px;
-}
-.container{
-  max-width:900px;
-  margin:30px auto;
-  padding:15px;
-}
-.card{
-  background:white;
-  border-radius:16px;
-  padding:20px;
-  margin-bottom:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 8px 18px rgba(0,0,0,0.1);
-}
-.card h2{margin:0;}
-.btn{
-  background:#22c55e;
-  color:white;
-  padding:12px 20px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:bold;
-}
-.back{
-  position:fixed;
-  top:10px;
-  left:10px;
-  background:#ef4444;
-  color:white;
-  padding:10px 16px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:bold;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f8fafc}
+.home-btn{position:fixed;top:12px;left:12px;background:#dc2626;color:#fff;
+padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:bold;z-index:10}
+.top-header{background:linear-gradient(135deg,#fee2e2,#fff7ed);
+padding:35px 15px 25px;text-align:center;border-radius:0 0 30px 30px}
+.semester-select{display:flex;justify-content:center;gap:15px;margin-top:10px}
+.semester-btn{padding:10px 18px;border:none;border-radius:14px;
+background:#e5e7eb;font-weight:bold;cursor:pointer}
+.semester-btn.active{background:#dc2626;color:white}
+.main-content{margin-top:20px;background:white;border-radius:30px;padding-bottom:30px}
+.container{max-width:1200px;margin:auto;padding:20px;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{position:relative;border-radius:24px;padding:36px 22px;text-align:center;
+box-shadow:0 10px 20px rgba(0,0,0,.15);cursor:pointer}
+.card.locked{opacity:.6}
+.icon{font-size:46px}
+.lock{position:absolute;top:12px;right:14px;font-size:26px}
+.bai{background:#fee2e2}
+.on-tap{background:#dcfce7}
+.project{background:#e0f2fe}
+#popup,#codePopup{position:fixed;inset:0;background:rgba(0,0,0,.4);
+display:none;align-items:center;justify-content:center;z-index:20}
+.popup-box{background:#fff;padding:25px;border-radius:20px;text-align:center;max-width:340px}
+.popup-box button{margin-top:15px;padding:10px 18px;border:none;border-radius:12px;
+background:#dc2626;color:white;font-size:16px}
+input{padding:10px;width:100%;font-size:16px;margin-top:10px}
 </style>
 </head>
 
 <body>
 
-<a class="back" href="../index.html">⬅ Trang chủ</a>
+<a class="home-btn" href="../index.html">🏠 Trang chủ</a>
 
-<header>📕 Luyện tập Tin học 5</header>
+<header class="top-header">
+  <h1>💻 LỚP 5 – TIN HỌC</h1>
+  <p>Tư duy thuật toán – Kỹ năng số</p>
+  <div class="semester-select">
+    <button class="semester-btn active" onclick="showSemester(1)">📗 HK1</button>
+    <button class="semester-btn" onclick="showSemester(2)">📕 HK2</button>
+  </div>
+</header>
 
-<div class="container">
+<main class="main-content">
 
-  <div class="card">
-    <h2>Bài 1: Căn bản công nghệ</h2>
-    <a class="btn" href="../Bai1Canbanvecongnghe(L1)/index.html">VÀO HỌC</a>
+<!-- ================= HK1 ================= -->
+<div class="container semester semester-1">
+
+  <!-- BÀI 1 → 8A -->
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🤖</div><h2>Bài 1<br>Máy tính giúp em làm gì?</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🔎</div><h2>Bài 2<br>Tìm kiếm thông tin</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🧠</div><h2>Bài 3<br>Thông tin & vấn đề</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">📂</div><h2>Bài 4<br>Tệp & thư mục</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">📊</div><h2>Bài 5<br>Bản quyền</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">📈</div><h2>Bài 6<br>Chỉnh sửa văn bản</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🧩</div><h2>Bài 7<br>Định dạng kí tự</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">⭐</div><h2>Bài 8A<br>Tạo thiệp</h2></div>
+
+  <!-- ÔN TẬP -->
+  <div class="card on-tap" data-ready="true" data-link="scorm/OntapHK1/index.html">
+    <div class="icon">📘</div><h2>Ôn tập HK1</h2>
   </div>
 
-  <div class="card">
-    <h2>Bài 2: Living Online</h2>
-    <a class="btn" href="../LivingOnline(Test1)/index.html">VÀO HỌC</a>
+  <!-- THI HK1 -->
+  <div class="card project" data-exam="true" data-code="HK1-2025"
+       data-link="scorm/ThiHK1/index.html">
+    <div class="icon">📝</div><h2>Thi học kì 1</h2>
   </div>
 
 </div>
+
+<!-- ================= HK2 ================= -->
+<div class="container semester semester-2" style="display:none">
+
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">➡️</div><h2>Bài 9<br>Tuần tự</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🔀</div><h2>Bài 10<br>Rẽ nhánh</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🔁</div><h2>Bài 11<br>Lặp</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🧮</div><h2>Bài 12<br>Tính toán</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">▶️</div><h2>Bài 13<br>Chạy thử</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">📝</div><h2>Bài 14<br>Kịch bản</h2></div>
+  <div class="card bai locked"><div class="lock">🔒</div><div class="icon">🚀</div><h2>Bài 15<br>Thực hành</h2></div>
+
+  <div class="card on-tap locked"><div class="lock">🔒</div><div class="icon">📕</div><h2>Ôn tập HK2</h2></div>
+
+  <div class="card project" data-exam="true" data-code="HK2-2025"
+       data-link="scorm/ThiHK2/index.html">
+    <div class="icon">📝</div><h2>Thi học kì 2</h2>
+  </div>
+
+</div>
+
+</main>
+
+<!-- POPUP -->
+<div id="popup">
+  <div class="popup-box">
+    <h3>🔒 Chưa mở bài học</h3>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+<div id="codePopup">
+  <div class="popup-box">
+    <h3>🔑 Nhập mã làm bài</h3>
+    <input id="examCode">
+    <button onclick="checkCode()">Xác nhận</button>
+  </div>
+</div>
+
+<script>
+let examLink="", examCode="";
+document.querySelectorAll(".card").forEach(c=>{
+  c.onclick=()=>{
+    if(c.dataset.exam){
+      examLink=c.dataset.link;
+      examCode=c.dataset.code;
+      document.getElementById("codePopup").style.display="flex";
+    }else if(c.dataset.ready){
+      location.href=c.dataset.link;
+    }else{
+      document.getElementById("popup").style.display="flex";
+    }
+  }
+});
+function closePopup(){popup.style.display="none"}
+function showSemester(s){
+  document.querySelectorAll(".semester").forEach(e=>e.style.display="none");
+  document.querySelector(".semester-"+s).style.display="grid";
+  document.querySelectorAll(".semester-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".semester-btn")[s-1].classList.add("active");
+}
+function checkCode(){
+  if(examCode===examCodeInput.value){location.href=examLink}
+  else alert("Sai mã");
+}
+const examCodeInput=document.getElementById("examCode");
+</script>
 
 </body>
 </html>
