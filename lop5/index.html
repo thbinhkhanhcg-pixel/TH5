@@ -144,16 +144,33 @@ body{
 .tin-hoc-tag{background:#2563eb;}
 .cong-nghe-tag{background:#f97316;}
 
-/* POPUP */
-.popup-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);
-display:none;align-items:center;justify-content:center;z-index:30}
-.popup-box{background:#fff;padding:30px 25px;border-radius:20px;
-text-align:center;max-width:340px}
-.popup-box h3{color:#dc2626}
-.popup-box input{width:100%;padding:10px;border-radius:10px;
-border:1px solid #ccc;font-size:16px}
-.popup-box button{margin-top:15px;padding:10px 18px;border:none;
-border-radius:12px;background:#dc2626;color:#fff;font-size:16px}
+/* ===== POPUP ===== */
+#popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:20;
+}
+.popup-box{
+  background:white;
+  padding:30px 25px;
+  border-radius:20px;
+  text-align:center;
+  max-width:340px;
+}
+.popup-box h3{color:#dc2626;}
+.popup-box button{
+  margin-top:20px;
+  padding:10px 18px;
+  border:none;
+  border-radius:12px;
+  background:#dc2626;
+  color:white;
+  font-size:16px;
+}
 </style>
 </head>
 
@@ -197,18 +214,21 @@ border-radius:12px;background:#dc2626;color:#fff;font-size:16px}
     <h2>Ôn tập<br>Học kì 1 - Tin học</h2>
   </div>
 
-  
-<div class="card project" data-exam="true" data-code="HK1-2025"
-data-link="scorm/ThiHK1_L5/index.html">
-<div class="icon">📝</div><h2>Thi học kì 1</h2>
-</div>
-
   <!-- ÔN TẬP CÔNG NGHỆ -->
   <div class="card bai" data-ready="true" data-link="scorm/OntapHK1(CN5-2526)/index.html">
     <div class="subject-tag cong-nghe-tag">Công nghệ</div>
     <div class="icon">📘</div>
     <h2>Ôn tập<br>Học kì 1 - Công Nghệ</h2>
   </div>
+
+  <!-- ===== THI HỌC KÌ 1 ===== -->
+<div class="card project"
+     data-exam="true"
+     data-code="HK1-2025"
+     data-link="scorm/ThiHK1_L5/index.html">
+  <div class="icon">📝</div>
+  <h2>Thi học kì 1</h2>
+</div>
 
 </div>
 
@@ -227,70 +247,104 @@ data-link="scorm/ThiHK1_L5/index.html">
     <div class="icon">📕</div>
     <h2>Ôn tập<br>Học kì 2</h2>
   </div>
-
-  <div class="card project" data-exam="true" data-code="HK2-2025"
-data-link="scorm/ThiHK2_L5/index.html">
-<div class="icon">📝</div><h2>Thi học kì 2</h2>
+  <!-- ===== THI HỌC KÌ 2 ===== -->
+<div class="card project"
+     data-exam="true"
+     data-code="HK2-2025"
+     data-link="scorm/ThiHK2_L5/index.html">
+  <div class="icon">📝</div>
+  <h2>Thi học kì 2</h2>
 </div>
 
 </div>
 
 </main>
 
-<!-- POPUP CHƯA MỞ -->
-<div id="popup" class="popup-bg">
-<div class="popup-box">
-<h3>🔒 Chưa mở bài học</h3>
-<button onclick="closePopup()">OK</button>
-</div>
-</div>
-
-<!-- POPUP NHẬP MÃ -->
-<div id="examPopup" class="popup-bg">
-<div class="popup-box">
-<h3>📝 Nhập mã làm bài</h3>
-<input id="examCodeInput" type="password" placeholder="Nhập mã">
-<div style="display:flex;gap:10px;justify-content:center">
-<button onclick="submitExam()">Xác nhận</button>
-<button style="background:#6b7280" onclick="cancelExam()">Hủy</button>
-</div>
-</div>
+<div id="popup">
+  <div class="popup-box">
+    <h3>🔒 Chưa mở bài học</h3>
+    <p>Bài này thầy/cô đang chuẩn bị.<br>Con quay lại sau nhé 😊</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
 </div>
 
 <script>
-const clickSound=new Audio("sound/click.mp3");
-let examLink="",examCode="";
+let currentExamLink = "";
+let currentExamCode = "";
 
-document.querySelectorAll(".card").forEach(c=>{
-c.onclick=()=>{
-clickSound.play();
-if(c.dataset.exam){
-examLink=c.dataset.link;
-examCode=c.dataset.code;
-examPopup.style.display="flex";
-return;
-}
-popup.style.display="flex";
-}
+/* GHI ĐÈ NHẸ CHO BÀI THI – KHÔNG ẢNH HƯỞNG BÀI KHÁC */
+document.querySelectorAll(".card[data-exam='true']").forEach(card=>{
+  card.addEventListener("click", function(e){
+    e.stopPropagation();   // rất quan trọng
+    currentExamLink = this.dataset.link;
+    currentExamCode = this.dataset.code;
+    document.getElementById("examPopup").style.display = "flex";
+  });
 });
 
-function submitExam(){
-if(examCodeInput.value===examCode)
-location.href=examLink;
-else alert("Sai mã!");
+function submitExamCode(){
+  const input = document.getElementById("examCodeInput").value.trim();
+  if(input === currentExamCode){
+    window.location.href = currentExamLink;
+  }else{
+    alert("❌ Mã chưa đúng, con nhập lại nhé!");
+  }
 }
+
 function cancelExam(){
-examPopup.style.display="none";
-examCodeInput.value="";
+  document.getElementById("examPopup").style.display = "none";
+  document.getElementById("examCodeInput").value = "";
 }
-function closePopup(){popup.style.display="none"}
+const clickSound = new Audio("sound/click.mp3");
+
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("click",function(){
+    clickSound.currentTime=0;
+    clickSound.play();
+    if(this.dataset.ready==="true"){
+      setTimeout(()=>window.location.href=this.dataset.link,150);
+    }else{
+      setTimeout(()=>document.getElementById("popup").style.display="flex",150);
+    }
+  });
+});
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
 function showSemester(s){
-document.querySelectorAll(".semester").forEach(e=>e.style.display="none");
-document.querySelector(".semester-"+s).style.display="grid";
-document.querySelectorAll(".semester-btn").forEach(b=>b.classList.remove("active"));
-document.querySelectorAll(".semester-btn")[s-1].classList.add("active");
+  document.querySelectorAll(".semester").forEach(e=>e.style.display="none");
+  document.querySelector(".semester-"+s).style.display="grid";
+  document.querySelectorAll(".semester-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".semester-btn")[s-1].classList.add("active");
 }
 </script>
+<!-- ===== POPUP NHẬP MÃ LÀM BÀI ===== -->
+<div id="examPopup" style="
+  position:fixed; inset:0;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:30;">
+
+  <div class="popup-box">
+    <h3>📝 Nhập mã làm bài</h3>
+
+    <input id="examCodeInput"
+           type="password"
+           placeholder="Nhập mã thầy/cô cung cấp"
+           style="width:100%;padding:10px;
+           border-radius:10px;border:1px solid #ccc;
+           font-size:16px">
+
+    <div style="margin-top:16px;display:flex;gap:10px;justify-content:center">
+      <button onclick="submitExamCode()">Xác nhận</button>
+      <button onclick="cancelExam()" style="background:#6b7280">Hủy</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
