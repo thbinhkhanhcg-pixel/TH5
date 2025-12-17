@@ -269,34 +269,9 @@ body{
 </div>
 
 <script>
-let currentExamLink = "";
-let currentExamCode = "";
-
-/* GHI ĐÈ NHẸ CHO BÀI THI – KHÔNG ẢNH HƯỞNG BÀI KHÁC */
-document.querySelectorAll(".card[data-exam='true']").forEach(card=>{
-  card.addEventListener("click", function(e){
-    e.stopPropagation();   // rất quan trọng
-    currentExamLink = this.dataset.link;
-    currentExamCode = this.dataset.code;
-    document.getElementById("examPopup").style.display = "flex";
-  });
-});
-
-function submitExamCode(){
-  const input = document.getElementById("examCodeInput").value.trim();
-  if(input === currentExamCode){
-    window.location.href = currentExamLink;
-  }else{
-    alert("❌ Mã chưa đúng, con nhập lại nhé!");
-  }
-}
-
-function cancelExam(){
-  document.getElementById("examPopup").style.display = "none";
-  document.getElementById("examCodeInput").value = "";
-}
 const clickSound = new Audio("sound/click.mp3");
 
+/* LOGIC CŨ – GIỮ NGUYÊN */
 document.querySelectorAll(".card").forEach(card=>{
   card.addEventListener("click",function(){
     clickSound.currentTime=0;
@@ -309,6 +284,35 @@ document.querySelectorAll(".card").forEach(card=>{
   });
 });
 
+/* ===== THÊM PHẦN BÀI THI (DÁN Ở ĐÂY) ===== */
+let currentExamLink = "";
+let currentExamCode = "";
+
+document.querySelectorAll(".card[data-exam='true']").forEach(card=>{
+  card.addEventListener("click", function(e){
+    e.stopPropagation(); // ⭐ CHẶN LOGIC CŨ
+    currentExamLink = this.dataset.link;
+    currentExamCode = this.dataset.code;
+    document.getElementById("examPopup").style.display = "flex";
+  });
+});
+
+/* HÀM POPUP */
+function submitExamCode(){
+  const input = document.getElementById("examCodeInput").value.trim();
+  if(input === currentExamCode){
+    window.location.href = currentExamLink;
+  }else{
+    alert("❌ Mã chưa đúng, con kiểm tra lại nhé!");
+  }
+}
+
+function cancelExam(){
+  document.getElementById("examPopup").style.display = "none";
+  document.getElementById("examCodeInput").value = "";
+}
+
+/* LOGIC CŨ */
 function closePopup(){
   document.getElementById("popup").style.display="none";
 }
@@ -320,6 +324,7 @@ function showSemester(s){
   document.querySelectorAll(".semester-btn")[s-1].classList.add("active");
 }
 </script>
+
 <!-- ===== POPUP NHẬP MÃ LÀM BÀI ===== -->
 <div id="examPopup" style="
   position:fixed; inset:0;
