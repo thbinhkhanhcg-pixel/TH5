@@ -254,12 +254,12 @@ data-link="scorm/ThiHK2_L5/index.html">
 
 </main>
 
-<div id="popup">
-  <div class="popup-box">
-    <h3>🔒 Chưa mở bài học</h3>
-    <p>Bài này thầy/cô đang chuẩn bị.<br>Con quay lại sau nhé 😊</p>
-    <button onclick="closePopup()">OK</button>
-  </div>
+<!-- POPUP CHƯA MỞ -->
+<div id="popup" class="popup-bg">
+<div class="popup-box">
+<h3>🔒 Chưa mở bài học</h3>
+<button onclick="closePopup()">OK</button>
+</div>
 </div>
 
 <!-- POPUP NHẬP MÃ -->
@@ -275,29 +275,37 @@ data-link="scorm/ThiHK2_L5/index.html">
 </div>
 
 <script>
-const clickSound = new Audio("sound/click.mp3");
+const clickSound=new Audio("sound/click.mp3");
+let examLink="",examCode="";
 
-document.querySelectorAll(".card").forEach(card=>{
-  card.addEventListener("click",function(){
-    clickSound.currentTime=0;
-    clickSound.play();
-    if(this.dataset.ready==="true"){
-      setTimeout(()=>window.location.href=this.dataset.link,150);
-    }else{
-      setTimeout(()=>document.getElementById("popup").style.display="flex",150);
-    }
-  });
+document.querySelectorAll(".card").forEach(c=>{
+c.onclick=()=>{
+clickSound.play();
+if(c.dataset.exam){
+examLink=c.dataset.link;
+examCode=c.dataset.code;
+examPopup.style.display="flex";
+return;
+}
+popup.style.display="flex";
+}
 });
 
-function closePopup(){
-  document.getElementById("popup").style.display="none";
+function submitExam(){
+if(examCodeInput.value===examCode)
+location.href=examLink;
+else alert("Sai mã!");
 }
-
+function cancelExam(){
+examPopup.style.display="none";
+examCodeInput.value="";
+}
+function closePopup(){popup.style.display="none"}
 function showSemester(s){
-  document.querySelectorAll(".semester").forEach(e=>e.style.display="none");
-  document.querySelector(".semester-"+s).style.display="grid";
-  document.querySelectorAll(".semester-btn").forEach(b=>b.classList.remove("active"));
-  document.querySelectorAll(".semester-btn")[s-1].classList.add("active");
+document.querySelectorAll(".semester").forEach(e=>e.style.display="none");
+document.querySelector(".semester-"+s).style.display="grid";
+document.querySelectorAll(".semester-btn").forEach(b=>b.classList.remove("active"));
+document.querySelectorAll(".semester-btn")[s-1].classList.add("active");
 }
 </script>
 
