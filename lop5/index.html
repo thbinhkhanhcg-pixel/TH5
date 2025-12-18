@@ -307,10 +307,12 @@ function submitExamCode(){
   }
 }
 
-function cancelExam(){
-  document.getElementById("examPopup").style.display = "none";
-  document.getElementById("examCodeInput").value = "";
-}
+document.querySelectorAll(".card[data-exam='true']").forEach(card=>{
+  card.addEventListener("click", function(e){
+    e.stopPropagation();
+    ...
+  });
+});
 
 /* LOGIC CŨ */
 function closePopup(){
@@ -347,7 +349,7 @@ function showSemester(s){
 
     <div style="margin-top:16px;display:flex;gap:10px;justify-content:center">
       <button onclick="submitExamCode()">Xác nhận</button>
-      <button onclick="cancelExam()" style="background:#6b7280">Hủy</button>
+      <button onclick="cancelExam(event)">Hủy</button>
     </div>
   </div>
 </div>
