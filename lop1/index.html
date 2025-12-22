@@ -127,4 +127,24 @@ main{
   </div>
 
   <div class="card bp" data-ready="true" data-link="hk1-tin5-bp/index.html">
-    <div class="icon">🧠</
+    <div class="icon">🧠</div>
+    <h2>HK1<br>Tin học 5 (BP)</h2>
+  </div>
+
+</div>
+
+</main>
+
+<script>
+/* LOGIC CLICK – GỌN, ỔN ĐỊNH */
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("click", function(){
+    if(this.dataset.ready === "true"){
+      window.location.href = this.dataset.link;
+    }
+  });
+});
+</script>
+
+</body>
+</html>
