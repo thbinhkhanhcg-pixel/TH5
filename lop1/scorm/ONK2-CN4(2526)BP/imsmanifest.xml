@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="uSehW0bd4Fley" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lom="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+	<metadata>
+		<schema>ADL SCORM</schema>
+		<schemaversion>1.2</schemaversion>
+		<lom:lom>
+			<lom:general>
+				<lom:title>
+					<lom:langstring>Ôn tập HK2  Công nghệ 4</lom:langstring>
+				</lom:title>
+			</lom:general>
+			<lom:educational>
+				<lom:typicallearningtime>
+				<lom:datetime>01:00:00</lom:datetime>
+				</lom:typicallearningtime>
+			</lom:educational>
+		</lom:lom>
+	</metadata>
+	<organizations default="uSehW0bd4Fley_organization">
+		<organization identifier="uSehW0bd4Fley_organization">
+
+			<title>Ôn tập HK2  Công nghệ 4</title>
+			<item identifier="C0EB0B93-B2D1-4DCE-B533-CF3E5A93777D" identifierref="resource">
+				<title>Ôn tập HK2  Công nghệ 4</title>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="resource" type="webcontent" adlcp:scormtype="sco" href="res/index.html">
+			<file href="res/data/apple-touch-icon.png"/>
+<file href="res/data/browsersupport.js"/>
+<file href="res/data/favicon.ico"/>
+<file href="res/data/fonts/fnt0.woff"/>
+<file href="res/data/fonts/fnt1.woff"/>
+<file href="res/data/fonts/fnt2.woff"/>
+<file href="res/data/fonts/fnt3.woff"/>
+<file href="res/data/goodbye.html"/>
+<file href="res/data/html5-unsupported.html"/>
+<file href="res/data/images/img-0873cfe64771e124196e1a7f5a6f68df10791e13.jpg"/>
+<file href="res/data/images/img-14c803b26f90b48fd9be7b79d9d7a35c11525910.png"/>
+<file href="res/data/images/img-18acdb920ee9bbe32a98303ae3bfaf7f09cfa232.jpg"/>
+<file href="res/data/images/img-1d9737884401c77da9b22967d5bd6a1a4d0b0cca.jpg"/>
+<file href="res/data/images/img-2aa9832142bb5c0d85da2e93c70746a5f5c19aa0.png"/>
+<file href="res/data/images/img-2cee5717250103989270edb71aadc77e13c0c4e7.jpg"/>
+<file href="res/data/images/img-37470cb606a6f343ee0235ec9fc20c4686147a82.jpg"/>
+<file href="res/data/images/img-4942290c9f9a8003b909d0b53f5bebe0ec14f20e.jpg"/>
+<file href="res/data/images/img-5825de4a6592ca7b50d447ac192579aac33835dc.png"/>
+<file href="res/data/images/img-5cf1b9bb6a9f04d8ad1f6000670b33914c88dc23.jpg"/>
+<file href="res/data/images/img-600bb2a947652f84b7e099a61252efba46131cff.jpg"/>
+<file href="res/data/images/img-611901cc9313f9e1a9e3c3f83273d21c896eb190.jpg"/>
+<file href="res/data/images/img-91362711de06303f618b743162c5d781b9756b3a.jpg"/>
+<file href="res/data/images/img-a089dd8fb9611abe1abc8b0f57bfd642d48e1920.jpg"/>
+<file href="res/data/images/img-a2da5aaddd272323ece84ce1d6160e1854ea8104.jpg"/>
+<file href="res/data/images/img-abe2746ff217da0b333611316bb3b3a03e9689a4.jpg"/>
+<file href="res/data/images/img-ae41f3caccd7207bad9213f741360a948dbde59f.png"/>
+<file href="res/data/images/img-b86224c611ac90d4bd2c9f3eaae256aad430720a.jpg"/>
+<file href="res/data/images/img-ce1a7039db6f1400b0db21a67e52dc6c1c5689c9.jpg"/>
+<file href="res/data/images/img-d06fcbba2a5c20e064cebd3f12f11a375d4796b9.jpg"/>
+<file href="res/data/images/img-df71045106dc0bab99164829b12d401605a856b3.jpg"/>
+<file href="res/data/images/img-ff8178fe84510ec3186728e5a24a61f2586add39.jpg"/>
+<file href="res/data/lms.js"/>
+<file href="res/data/player.js"/>
+<file href="res/index.html"/>
+
+		</resource>
+	</resources>
+</manifest>
