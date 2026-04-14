@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="zDT9wu96aAluq" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lom="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+	<metadata>
+		<schema>ADL SCORM</schema>
+		<schemaversion>1.2</schemaversion>
+		<lom:lom>
+			<lom:general>
+				<lom:title>
+					<lom:langstring>Ôn tập HK2  Công nghệ 3</lom:langstring>
+				</lom:title>
+			</lom:general>
+			<lom:educational>
+				<lom:typicallearningtime>
+				<lom:datetime>01:00:00</lom:datetime>
+				</lom:typicallearningtime>
+			</lom:educational>
+		</lom:lom>
+	</metadata>
+	<organizations default="zDT9wu96aAluq_organization">
+		<organization identifier="zDT9wu96aAluq_organization">
+
+			<title>Ôn tập HK2  Công nghệ 3</title>
+			<item identifier="C0EB0B93-B2D1-4DCE-B533-CF3E5A93777D" identifierref="resource">
+				<title>Ôn tập HK2  Công nghệ 3</title>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="resource" type="webcontent" adlcp:scormtype="sco" href="res/index.html">
+			<file href="res/data/apple-touch-icon.png"/>
+<file href="res/data/browsersupport.js"/>
+<file href="res/data/favicon.ico"/>
+<file href="res/data/fonts/fnt0.woff"/>
+<file href="res/data/fonts/fnt1.woff"/>
+<file href="res/data/fonts/fnt2.woff"/>
+<file href="res/data/fonts/fnt3.woff"/>
+<file href="res/data/fonts/fnt4.woff"/>
+<file href="res/data/goodbye.html"/>
+<file href="res/data/html5-unsupported.html"/>
+<file href="res/data/images/img-0f44735a61df6e51a34d0e9a4dcc23c2d1708c1f.png"/>
+<file href="res/data/images/img-0f4b47042ab804e833544db18b7234fb8bb8a655.png"/>
+<file href="res/data/images/img-2aa9832142bb5c0d85da2e93c70746a5f5c19aa0.png"/>
+<file href="res/data/images/img-600bb2a947652f84b7e099a61252efba46131cff.jpg"/>
+<file href="res/data/images/img-607025834a5ded2ec66bae125d13ebe6be309285.jpg"/>
+<file href="res/data/images/img-61e0a95d2263b571200049c6b0b7e6a325086398.png"/>
+<file href="res/data/images/img-6de4a10d6989f1eac2f1f10174bafe5550910257.jpg"/>
+<file href="res/data/images/img-88b849f387729373951db51d0dc7a787c8a22ea9.png"/>
+<file href="res/data/images/img-a7f74408776f791a5d1281514603530a5db29699.png"/>
+<file href="res/data/images/img-c405450c6f1a5333480b4311b232f0122f8a50d7.jpg"/>
+<file href="res/data/images/img-df71045106dc0bab99164829b12d401605a856b3.jpg"/>
+<file href="res/data/lms.js"/>
+<file href="res/data/player.js"/>
+<file href="res/index.html"/>
+
+		</resource>
+	</resources>
+</manifest>
